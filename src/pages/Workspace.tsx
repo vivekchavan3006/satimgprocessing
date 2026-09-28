@@ -633,6 +633,30 @@ export default function Workspace() {
   const secondSub = mode === 'bi-temporal' ? '18 MAY 2026' : undefined;
 
   const needsSecond = mode === 'optical-sar' || mode === 'bi-temporal';
+
+  const generalSuggestions = [
+    'Identify land use changes in this imagery',
+    'Detect water bodies and classify flood risk zones',
+    'Locate urban settlements and estimate population density',
+    'Map vegetation cover and assess deforestation',
+    'Identify road networks and transportation infrastructure',
+  ];
+
+  const detectionSuggestions = [
+    'Detect and count all vehicles in the scene',
+    'Identify buildings and estimate footprint area',
+    'Locate water bodies and agricultural fields',
+    'Find roads and bridges in the image',
+  ];
+
+  const disasterSuggestions = [
+    'Estimate total landslide-affected area in km²',
+    'Identify damaged structures and infrastructure',
+    'Map flood inundation extent and depth zones',
+    'Assess severity of earthquake surface rupture',
+  ];
+
+  const activeSuggestions =
     mode === 'object-detection'
       ? detectionSuggestions
       : mode === 'disaster'

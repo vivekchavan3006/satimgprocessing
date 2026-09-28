@@ -10,15 +10,22 @@ i18n
   .init({
     fallbackLng: 'en',
     supportedLngs: [
-      'en', 'hi', 'mr', 'bn', 'ta', 'te', 'kn', 'ml', 'gu', 'pa', 'ur', 
-      'es', 'fr', 'de', 'pt', 'it', 'nl', 'ru', 'uk', 'zh-CN', 'zh-TW', 
+      'en', 'hi', 'mr', 'bn', 'ta', 'te', 'kn', 'ml', 'gu', 'pa', 'ur',
+      'es', 'fr', 'de', 'pt', 'it', 'nl', 'ru', 'uk', 'zh-CN', 'zh-TW',
       'ja', 'ko', 'ar', 'tr', 'id', 'vi', 'th'
     ],
     backend: {
       loadPath: '/locales/{{lng}}.json',
+      // Add a short request timeout so a network failure doesn't hang forever
+      requestOptions: { cache: 'default' },
     },
     interpolation: {
       escapeValue: false,
+    },
+    // CRITICAL: disable Suspense mode so components render immediately
+    // even before the locale JSON file finishes loading from the network.
+    react: {
+      useSuspense: false,
     },
   });
 
